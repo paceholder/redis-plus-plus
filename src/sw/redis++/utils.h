@@ -32,6 +32,10 @@
 #  endif
 #endif
 
+#      define REDIS_PLUS_PLUS_HAS_STRING_VIEW
+#      define REDIS_PLUS_PLUS_HAS_OPTIONAL
+#      define REDIS_PLUS_PLUS_HAS_VARIANT
+
 #include <cstring>
 #include <string>
 #include <type_traits>

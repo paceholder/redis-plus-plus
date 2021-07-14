@@ -128,7 +128,10 @@ if(REDIS_PLUS_PLUS_BUILD_STATIC)
 
     if (WIN32)
         target_compile_definitions(${STATIC_LIB} PRIVATE NOMINMAX)
+
         set_target_properties(${STATIC_LIB} PROPERTIES CXX_STANDARD ${REDIS_PLUS_PLUS_CXX_STANDARD})
+        target_compile_features(${STATIC_LIB} PUBLIC cxx_std_${REDIS_PLUS_PLUS_CXX_STANDARD})
+
         set_target_properties(${STATIC_LIB} PROPERTIES OUTPUT_NAME redis++_static)
     else()
         target_compile_options(${STATIC_LIB} PRIVATE "-Wall" "-W" "-Werror")
@@ -177,6 +180,7 @@ if(REDIS_PLUS_PLUS_BUILD_SHARED)
     if(WIN32)
         target_compile_definitions(${SHARED_LIB} PRIVATE NOMINMAX)
         set_target_properties(${SHARED_LIB} PROPERTIES CXX_STANDARD ${REDIS_PLUS_PLUS_CXX_STANDARD})
+        target_compile_features(${SHARED_LIB} PUBLIC cxx_std_${REDIS_PLUS_PLUS_CXX_STANDARD})
         set_target_properties(${SHARED_LIB} PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
     else()
         target_compile_options(${SHARED_LIB} PRIVATE "-Wall" "-W" "-Werror")
